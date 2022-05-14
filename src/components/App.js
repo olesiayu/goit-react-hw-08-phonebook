@@ -4,9 +4,7 @@ import authSelectors from 'auth/auth-selectors';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
-// import LoginView from 'views/LoginView';
-// import PhonebookView from 'views/PhonebookView';
-// import RegisterView from 'views/RegisterView';
+
 import AppBar from './AppBar';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
@@ -74,6 +72,7 @@ export default function App() {
                   </PublicRoute>
                 }
               />
+              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </Suspense>
         </div>

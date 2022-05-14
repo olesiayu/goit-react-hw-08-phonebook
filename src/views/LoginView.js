@@ -72,6 +72,7 @@ export default function LoginView() {
             name="email"
             value={email}
             onChange={handleChange}
+            required
           />
         </label>
 
@@ -83,6 +84,8 @@ export default function LoginView() {
             name="password"
             value={password}
             onChange={handleChange}
+            minLength={7}
+            required
           />
         </label>
         <button type="submit" style={s.button}>
