@@ -1,12 +1,13 @@
 import authSelectors from 'auth/auth-selectors';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import homeIcon from './home-icon.png';
 
 const s = {
-  // container: {
-  //   display: 'flex',
-  //   alignItems: 'center',
-  // },
+  container: {
+    display: 'flex',
+    // alignItems: 'center',
+  },
   button: {
     display: 'block',
     marginLeft: 20,
@@ -28,30 +29,31 @@ const s = {
 const Navigation = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
-    <nav>
-      {/* <NavLink
+    <nav style={s.container}>
+      <NavLink
         to="/"
         style={({ isActive }) => ({
           marginRight: 10,
-          color: isActive ? 'red' : 'black',
+          color: isActive ? 'darkviolet' : 'black',
+          textDecoration: 'none',
         })}
       >
-        Домашня
-      </NavLink> */}
+        <button style={s.button}>
+          <img src={homeIcon} alt="homeIcon" width="32" />
+        </button>
+      </NavLink>
 
       {isLoggedIn && (
-        <button style={s.button}>
-          <NavLink
-            to="/contacts"
-            style={({ isActive }) => ({
-              // marginRight: 10,
-              color: isActive ? 'darkviolet' : 'black',
-              textDecoration: 'none',
-            })}
-          >
-            Контакти
-          </NavLink>
-        </button>
+        <NavLink
+          to="/contacts"
+          style={({ isActive }) => ({
+            // marginRight: 10,
+            color: isActive ? 'darkviolet' : 'black',
+            textDecoration: 'none',
+          })}
+        >
+          <button style={s.button}>Контакти</button>
+        </NavLink>
       )}
     </nav>
   );

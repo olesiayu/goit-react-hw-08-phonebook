@@ -3,7 +3,7 @@ import authOperations from 'auth/auth-operations';
 import authSelectors from 'auth/auth-selectors';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 // import LoginView from 'views/LoginView';
 // import PhonebookView from 'views/PhonebookView';
 // import RegisterView from 'views/RegisterView';
@@ -21,9 +21,9 @@ const RegisterView = lazy(() =>
 const LoginView = lazy(() =>
   import('views/LoginView' /* webpackChunkName "loginView" */)
 );
-// const HomeView = lazy(() =>
-//   import('views/HomeView' /* webpackChunkName "homeView" */)
-// );
+const HomeView = lazy(() =>
+  import('views/HomeView' /* webpackChunkName "homeView" */)
+);
 
 export default function App() {
   const dispatch = useDispatch();
@@ -42,14 +42,14 @@ export default function App() {
           <AppBar />
           <Suspense fallback={<h2>LOADING...</h2>}>
             <Routes>
-              {/* <Route
+              <Route
                 path="/"
                 element={
                   <PublicRoute>
                     <HomeView />
                   </PublicRoute>
                 }
-              /> */}
+              />
               <Route
                 path="contacts"
                 element={
@@ -61,7 +61,7 @@ export default function App() {
               <Route
                 path="register"
                 element={
-                  <PublicRoute>
+                  <PublicRoute restricted>
                     <RegisterView />
                   </PublicRoute>
                 }
@@ -69,7 +69,7 @@ export default function App() {
               <Route
                 path="login"
                 element={
-                  <PublicRoute>
+                  <PublicRoute restricted>
                     <LoginView />
                   </PublicRoute>
                 }

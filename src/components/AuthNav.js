@@ -23,28 +23,25 @@ const s = {
 export default function AuthNav() {
   return (
     <div style={s.container}>
-      <button style={s.button}>
-        <NavLink
-          to="/register"
-          style={({ isActive }) => ({
-            color: isActive ? 'darkviolet' : 'black',
-            textDecoration: 'none',
-          })}
-        >
-          Реєстрація
-        </NavLink>
-      </button>
-      <button style={s.button}>
-        <NavLink
-          to="/login"
-          style={({ isActive }) => ({
-            color: isActive ? 'darkviolet' : 'black',
-            textDecoration: 'none',
-          })}
-        >
-          Увійти
-        </NavLink>
-      </button>
+      <NavLink
+        to="/register"
+        style={({ isActive }) => ({
+          color: isActive ? 'darkviolet' : 'black',
+          textDecoration: 'none',
+        })}
+      >
+        <button style={s.button}>Реєстрація</button>
+      </NavLink>
+
+      <NavLink
+        to="/login"
+        style={({ isActive }) => ({
+          color: isActive ? 'darkviolet' : 'black',
+          textDecoration: 'none',
+        })}
+      >
+        <button style={s.button}>Вхід</button>
+      </NavLink>
     </div>
   );
 }
