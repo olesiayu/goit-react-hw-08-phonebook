@@ -3,13 +3,37 @@ import { useDispatch } from 'react-redux';
 import authOperations from 'auth/auth-operations';
 
 const s = {
-  form: {
-    width: 320,
-  },
   label: {
     display: 'flex',
     flexDirection: 'column',
+    marginBottom: 10,
+  },
+  input: {
+    display: 'block',
+    alignItems: 'center',
+    height: 30,
+    width: 200,
+    borderRadius: 5,
     marginBottom: 15,
+    marginTop: 10,
+    marginRight: 'auto',
+    marginLeft: 'auto',
+    border: 'none',
+  },
+  title: {
+    marginBottom: 20,
+    marginTop: 20,
+  },
+  button: {
+    fontWeight: 'bold',
+    borderRadius: 5,
+    marginTop: 5,
+    marginBottom: 10,
+    height: 35,
+    width: 130,
+    backgroundColor: 'rgb(216, 174, 245)',
+    border: 'none',
+    cursor: 'pointer',
   },
 };
 
@@ -38,11 +62,12 @@ export default function LoginView() {
 
   return (
     <div>
-      <h1>Сторінка логіна</h1>
-      <form onSubmit={handleSubmit} style={s.form} autoComplete="off">
+      <h2 style={s.title}>Авторизуйтеся, будь ласка!</h2>
+      <form onSubmit={handleSubmit} autoComplete="off">
         <label style={s.label}>
           Пошта
           <input
+            style={s.input}
             type="email"
             name="email"
             value={email}
@@ -53,13 +78,16 @@ export default function LoginView() {
         <label style={s.label}>
           Пароль
           <input
+            style={s.input}
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
           />
         </label>
-        <button type="submit">Увійти</button>
+        <button type="submit" style={s.button}>
+          Увійти
+        </button>
       </form>
     </div>
   );

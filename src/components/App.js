@@ -10,6 +10,7 @@ import { Routes, Route } from 'react-router-dom';
 import AppBar from './AppBar';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import s from './App.module.css';
 
 const PhonebookView = lazy(() =>
   import('views/PhonebookView' /* webpackChunkName "phoneBookView" */)
@@ -37,7 +38,7 @@ export default function App() {
       {isFetchingCurrentUser ? (
         <h2>LOADING...</h2>
       ) : (
-        <>
+        <div className={s.container}>
           <AppBar />
           <Suspense fallback={<h2>LOADING...</h2>}>
             <Routes>
@@ -75,7 +76,7 @@ export default function App() {
               />
             </Routes>
           </Suspense>
-        </>
+        </div>
       )}
     </>
   );

@@ -10,6 +10,7 @@
   height: 25px;
   background-color: rgb(216, 174, 245);
   border: none;
+  cursor: pointer;
 }
 
 .text {
